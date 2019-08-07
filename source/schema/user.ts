@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
 
 export const userDefs = gql`
-    type User {
+    type User @key(fields: "id") @key(fields: "name") {
         id: String,
         name: String,
         created: Float,
@@ -9,7 +9,8 @@ export const userDefs = gql`
         link_karma: Int,
         comment_karma: Int,
         is_mod: Boolean,
-        icon_img: String
+        icon_img: String,
+        comments: [Comment]
     }
 
     extend type Query {
