@@ -4,8 +4,10 @@
   "description": "A GraphQL wrapper for reddit-api",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
-    "build": "nodemon 'source/server.ts' --exec 'ts-node' source/server.ts -e ts,graphql"
+    "start": "node 'dist/server.js'",
+    "build": "tsc -p . && ncp source/schema dist/schema",
+    "start:dev": "npm run build:dev",
+    "build:dev": "nodemon 'source/server.ts' --exec 'ts-node' source/server.ts -e ts,graphql"
   },
   "author": "Anurag Saini",
   "license": "ISC",
@@ -13,5 +15,9 @@
     "nodemon": "^1.19.1",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "apollo-server": "^2.8.1",
+    "graphql": "^14.4.2"
   }
 }
